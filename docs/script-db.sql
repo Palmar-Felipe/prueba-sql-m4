@@ -1,0 +1,41 @@
+
+create database libros;
+
+use libros;
+
+CREATE TABLE users (
+    id_user INT AUTO_INCREMENT PRIMARY KEY,
+    namei VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    dni VARCHAR(100)NOT NULL,
+    phone varchar (50) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE books(
+
+id_book INT AUTO_INCREMENT PRIMARY KEY,
+isbn VARCHAR(100) NOT NULL,  
+publication_year VARCHAR(100) NOT NULL,
+author VARCHAR(100) NOT NULL, 	
+id_user int not null,
+foreign key (id_user) references users (id_user),
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+ );  
+
+
+CREATE TABLE loans(
+id_loan INT AUTO_INCREMENT PRIMARY KEY,
+loan_date VARCHAR(100) NOT NULL,
+return_date VARCHAR(100) NOT NULL,
+statuss VARCHAR(100) NOT NULL,
+id_user INT NOT NULL,
+id_book INT NOT NULL,
+FOREIGN KEY (id_user) REFERENCES users (id_user),
+FOREIGN KEY (id_book) REFERENCES books (id_book),
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+
+);
