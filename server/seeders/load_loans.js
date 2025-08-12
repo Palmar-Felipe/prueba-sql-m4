@@ -10,29 +10,30 @@ import { pool } from '../connection_db.js';
 
 
 
-export async function loadUsDb() {
-    const loadArchive = path.resolve('server/data/users.csv');
-    const us = [];
+export async function loadloanDb() {
+    const loadArchive = path.resolve('server/data/loans.csv');
+    const loan = [];
     
     
     return new Promise ((resolve, reject)=>{
         fs.createReadStream(loadArchive)
             .pipe(csv())
             .on("data", (fila) =>{
-                us.push([ //crea un array
+                loan.push([ //crea un array
+                   fila.id_loan,
                    fila.id_user,
-                   fila.namei?.trim(),
-                   fila.dni,
-                   fila.email,
-                   fila.phone
+                   fila.isbn,
+                   fila.loan_date,
+                   fila.return_date,
+                   fila.statuss
                 ]);
             })
             .on('end', async() =>{  
                 try {
-                    const sql ='INSERT INTO users(id_user,namei,dni,email,phone) VALUES ?';
-                    const [result] = await pool.query(sql,[us]);
+                    const sql ='INSERT INTO loans(id_loan,id_user,isbn,loan_date,return_date,statuss) VALUES ?';
+                    const [result] = await pool.query(sql,[loan]);
 
-                    console.log(` se inserto ${result.affectedRows} autores` )
+                    console.log(` se inserto ${result.affectedRows} libros` )
                     resolve();
 
                 } catch (error) {
