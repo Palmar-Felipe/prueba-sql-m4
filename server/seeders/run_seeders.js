@@ -1,15 +1,20 @@
-import { loadbokDb } from "./load_book.js";
-import { loadloanDb } from "./load_loans.js";
-import { loadUsDb } from "./load_users.js";
+
+/*import funtion they user, transaction, billing */
+import { loadbillDb } from "./load_billings.js";
+import { loadtransDb } from "./load_transaction.js";
+import { loadusersDb } from "./load_users.js";
+
 
 
 (async () =>{
     try {
         console.log('iniciando el seeders ');
 
-        await loadUsDb();
-        await loadbokDb();
-        await loadloanDb();
+        await loadusersDb();
+        await loadtransDb();
+        await loadbillDb();
+        
+        
 
         console.log('todos los seeders se ejecutaron de manera correcta')
     } catch (error) {

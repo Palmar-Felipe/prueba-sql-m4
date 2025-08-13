@@ -10,27 +10,29 @@ import { pool } from '../connection_db.js';
 
 
 
-export async function loadUsDb() {
+export async function loadusersDb() {
     const loadArchive = path.resolve('server/data/users.csv');
-    const us = [];
+    const users = [];
     
     
     return new Promise ((resolve, reject)=>{
         fs.createReadStream(loadArchive)
             .pipe(csv())
             .on("data", (fila) =>{
-                us.push([ //crea un array
+                users.push([ //crea un array
                    fila.id_user,
                    fila.namei?.trim(),
                    fila.dni,
+                   fila.address,
+                   fila.phone,
                    fila.email,
-                   fila.phone
+                   
                 ]);
             })
             .on('end', async() =>{  
                 try {
-                    const sql ='INSERT INTO users(id_user,namei,dni,email,phone) VALUES ?';
-                    const [result] = await pool.query(sql,[us]);
+                    const sql ='INSERT INTO users(id_user,namei,dni,address,phone, email) VALUES ?';
+                    const [result] = await pool.query(sql,[users]);
 
                     console.log(` se inserto ${result.affectedRows} autores` )
                     resolve();

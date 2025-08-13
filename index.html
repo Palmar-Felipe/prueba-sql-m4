@@ -1,0 +1,83 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="sistema interactivo que permitirá al usuario ingresar datos y recibir mensajes dinámicos de manera estructurada. ">
+    <meta name="keywords" content="trabajo-1-de-java-script">
+    <meta name="sitedomain" content="https://github.com/Palmar-Felipe">
+    <meta name="author" content="Felipe Miguel Palmar Ramirez">
+    <meta name="desingner" content="Felipe Miguel Palmar Ramirez">
+    <meta name="copyright" content="© Felipe Miguel Palmar Ramirez. All rights reserved">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="revisit-after" content="10days">
+    <link rel="stylesheet" href="./app/css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <title>Biblioteca</title>
+</head>
+
+<body class="p-4">
+
+    <h1 class="mb-4">Bank management</h1>
+
+    <!-- form-->
+    <form id="prestamoForm" class="mb-4">
+        <input type="hidden" id="id_prestamo">
+
+        <div class="row g-3">
+            <div class="col-md-2">
+                <input type="number" class="form-control" id="id_usuario" placeholder="Id_user" required>
+            </div>
+            <div class="col-md-2">
+                <input type="text" class="form-control" id="isbn" placeholder="namei" required>
+            </div>
+            <div class="col-md-2">
+                <input type="number" class="form-control" id="fecha_prestamo" placeholder="dni">
+            </div>
+            <div class="col-md-2">
+                <input type="text" class="form-control" id="fecha_devolucion" placeholder="addreess">
+            </div>
+            <div class="col-md-2">
+                <input type="number" class="form-control" id="fecha_devolucion" placeholder="phone">
+            </div>
+            <div class="col-md-2">
+                <input type="email" class="form-control" id="fecha_devolucion" placeholder="email">
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary w-100">Guardar</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- table -->
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>id_user</th>
+                <th>namei</th>
+                <th>dni</th>
+                <th>addreess</th>
+                <th>phone</th>
+                <th>email</th>
+            
+            </tr>
+        </thead>
+        <tbody id="tablaPrestamos">
+            <!-- date dinamic -->
+        </tbody>
+    </table>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+    <script type="module" src="./app/js/main.js"></script>
+</body>
+
+</html>
